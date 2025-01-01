@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { catchError, map, mergeMap, of, tap } from "rxjs";
+import { catchError, map, mergeMap, of } from "rxjs";
 import { CartService } from "../../../services/cart.service";
 import { loadCartItems, loadCartItemsFailure, loadCartItemsSuccess } from "./cart.actions";
 
@@ -12,7 +12,6 @@ export class CartEffects {
 
   effects$ = createEffect(() =>
     this.actions$.pipe(
-      tap(console.log),
       ofType(loadCartItems),
       mergeMap(() => this.cartService.getCartItems().pipe(
         map(res => loadCartItemsSuccess(res)),

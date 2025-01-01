@@ -1,11 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadProducts } from "./products.actions";
+import { loadProducts, setProductsPredictedTexts } from "./products.actions";
 import { ProductState } from "./products.state";
 
 const initialState: ProductState = {
   products: [],
   error: '',
-  loading: false
+  loading: false,
+  productsPredictedTexts: []
 }
 
 export const productReducer = createReducer<ProductState>(
@@ -13,5 +14,9 @@ export const productReducer = createReducer<ProductState>(
   on(loadProducts, (state, action) => ({
     ...state,
     loading: true
+  })),
+  on(setProductsPredictedTexts, (state, action) => ({
+    ...state,
+    productsPredictedTexts: action.result
   }))
 )

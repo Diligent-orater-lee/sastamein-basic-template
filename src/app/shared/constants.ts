@@ -4,5 +4,6 @@ export const APIUrls = {
   login: environment.apiUrl + '/login',
   register: environment.apiUrl + '/register',
   products: environment.apiUrl + '/products',
-  getCartItems: environment.apiUrl + '/api/users/cart'
+  getCartItems: environment.apiUrl + '/api/users/cart',
+  getProductTextPrediction: (text: string) => environment.apiUrl + `/api/products/text-prediction?text=${text}`,
 }

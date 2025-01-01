@@ -2,3 +2,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  // Only brand-specific colors
+  --theme-primary: #FCD34D;    /* amber-400 - main brand color for buttons */
+  --theme-notification: #EF4444;     /* red-500 - notification badges */
+}
+
+// Minimal theme classes
+.theme-button {
+  background-color: var(--theme-primary);
+
+  &:hover {
+    background-color: #FDE68A; /* yellow-300 */
+  }
+}
+
+.theme-notification {
+  background-color: var(--theme-notification);
+}

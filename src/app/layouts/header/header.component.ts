@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, type OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, type OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subject } from 'rxjs';
+import { debounceTime, filter, Observable } from 'rxjs';
 import { loadCartItems } from '../../modules/cart/store/cart.actions';
 import { selectCartItemsCount } from '../../modules/cart/store/cart.selectors';
-import { searchProducts } from '../../modules/products/store/products.actions';
+import { loadProductsPredictedTexts, searchProducts } from '../../modules/products/store/products.actions';
+import { selectProductsPredictedTexts } from '../../modules/products/store/products.selectors';
 import { AppState } from '../../store/app.state';
 
 @Component({
@@ -20,15 +22,19 @@ import { AppState } from '../../store/app.state';
 export class HeaderComponent implements OnInit {
 
   searchForm = new FormControl('', Validators.required);
-  searchValueChange$ = new Subject<void>();
   toggleBurgerMenu = false;
   searchFocused = false;
   cartCount$!: Observable<number>;
-  predictedTexts = [];
+  predictedTexts$!: Observable<string[]>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private cref: ChangeDetectorRef) {
     this.store.dispatch(loadCartItems());
     this.cartCount$ = this.store.select(selectCartItemsCount);
+    this.predictedTexts$ = this.store.select(selectProductsPredictedTexts);
+
+    this.searchForm.valueChanges.pipe(takeUntilDestroyed(), debounceTime(500), filter(x => !!x)).subscribe((value) => {
+      this.store.dispatch(loadProductsPredictedTexts(value as string));
+    });
   }
 
   ngOnInit(): void { }
@@ -52,14 +58,11 @@ export class HeaderComponent implements OnInit {
     this.search();
   }
 
-  inputChanged() {
-    this.searchValueChange$.next();
-  }
-
   inputFocusChanged(focused: boolean) {
     setTimeout(() => {
       this.searchFocused = focused;
-    }, 1000);
+      this.cref.detectChanges();
+    }, 200);
   }
 
 }
