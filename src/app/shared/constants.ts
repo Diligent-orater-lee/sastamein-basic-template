@@ -1,4 +1,4 @@
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 export const APIUrls = {
   login: environment.apiUrl + '/login',

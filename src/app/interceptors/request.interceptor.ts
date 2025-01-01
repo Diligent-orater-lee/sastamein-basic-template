@@ -1,5 +1,5 @@
 import { HttpInterceptorFn } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 export const RequestInterceptor: HttpInterceptorFn = (req, next) => {
   const clientId = environment.clientId;
