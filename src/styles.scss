@@ -4,20 +4,188 @@
 @tailwind utilities;
 
 :root {
-  // Only brand-specific colors
-  --theme-primary: #FCD34D;    /* amber-400 - main brand color for buttons */
-  --theme-notification: #EF4444;     /* red-500 - notification badges */
+  // Existing theme variables
+  --theme-primary: #FCD34D;
+  /* amber-400 - buttons */
+  --theme-notification: #EF4444;
+  /* notifications */
+
+  // New navigation-specific variables
+  --theme-nav-bg: #4C1D95;
+  /* violet-900 - nav background */
+  --theme-link-hover: #FBBF24;
+  /* yellow-400 - link hover */
+
+  --theme-text-light: #FFFFFF;
+  /* white text */
+  --theme-overlay-dark: 0.5;
+  /* brightness value for overlay */
+
+  --theme-heart-active: #FF0000;
+  /* red for active wishlist */
+  --theme-price: #4C1D95;
+  /* violet-900 for price */
+  --theme-price-strike: #6B7280;
+  /* gray-500 for reference price */
+
+  // New home page specific variables
+  --theme-border-highlight: #FBBF24;
+  /* yellow-400 for borders */
+  --theme-icon-color: #4C1D95;
+  /* violet-900 for icons */
+  --theme-section-indicator: #7C3AED;
+  /* purple-600 for section indicators */
+  --theme-btn-hover: #FCD34D;
+  /* yellow-300 for button hover */
+  --theme-text-light: #FFFFFF;
+  /* white text */
+  --theme-special-text: #FBBF24;
+  /* yellow-400 for special text */
 }
 
-// Minimal theme classes
+// Navigation theme classes
+.theme-nav-bg {
+  background-color: var(--theme-nav-bg);
+}
+
 .theme-button {
   background-color: var(--theme-primary);
+}
 
+.theme-link-hover {
   &:hover {
-    background-color: #FDE68A; /* yellow-300 */
+    color: var(--theme-link-hover);
+    text-decoration: underline;
   }
 }
 
-.theme-notification {
-  background-color: var(--theme-notification);
+.theme-active-bg {
+  background-color: var(--theme-primary);
+}
+
+// Active link styles
+.active-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--theme-link-hover);
+
+  &:before {
+    content: "";
+    height: 2px;
+    width: 80%;
+    position: absolute;
+    display: block;
+    background: var(--theme-link-hover);
+    left: 10%;
+    bottom: -4px;
+  }
+}
+
+.theme-category-image {
+  &.dimmed {
+    filter: brightness(var(--theme-overlay-dark));
+    transition: filter 0.3s;
+  }
+
+  &:hover {
+    filter: brightness(1);
+  }
+}
+
+.theme-category-text {
+  color: var(--theme-text-light);
+
+  &:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+}
+
+// New product-specific classes
+.theme-offer-badge {
+  background-color: var(--theme-primary);
+}
+
+.theme-wishlist-btn {
+  background-color: var(--theme-primary);
+
+  &.active svg {
+    fill: var(--theme-heart-active);
+  }
+
+  &:not(.active) svg {
+    fill: currentColor;
+  }
+}
+
+.theme-price {
+  color: var(--theme-price);
+
+  .reference-price {
+    color: var(--theme-price-strike);
+  }
+}
+
+.theme-cart-btn {
+  background-color: var(--theme-nav-bg);
+  color: white;
+}
+
+.theme-hero-button {
+  background-color: var(--theme-primary);
+
+  &:hover {
+    background-color: var(--theme-btn-hover);
+  }
+}
+
+.theme-feature-card {
+  border: 2px solid var(--theme-border-highlight);
+
+  .icon {
+    color: var(--theme-icon-color);
+  }
+}
+
+.theme-section-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 0.25rem;
+    background: var(--theme-section-indicator);
+    margin-top: 0.5rem;
+  }
+}
+
+.theme-special-offer {
+  background-color: var(--theme-nav-bg);
+
+  .title {
+    color: var(--theme-special-text);
+  }
+
+  .description {
+    color: var(--theme-text-light);
+  }
+
+  .action-button {
+    background-color: var(--theme-primary);
+
+    &:hover {
+      background-color: var(--theme-btn-hover);
+    }
+  }
+}
+
+.theme-show-more {
+  background-color: #E5E5E5;
+  color: #1e3a8a;
+
+  svg {
+    fill: currentColor;
+  }
 }

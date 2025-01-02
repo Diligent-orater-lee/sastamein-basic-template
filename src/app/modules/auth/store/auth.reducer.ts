@@ -1,11 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { getUserDetails } from "./auth.actions";
+import { getUserDetails, logoutAction } from "./auth.actions";
 import { AuthState } from "./auth.state";
 
 const initialState: AuthState = {
   user: {},
   error: '',
-  loading: false
+  loading: false,
+  isLoggedIn: false
 }
 
 export const authReducer = createReducer<AuthState>(
@@ -13,5 +14,14 @@ export const authReducer = createReducer<AuthState>(
   on(getUserDetails, (state, action) => ({
     ...state,
     loading: true
-  }))
+  })),
+  on(logoutAction, (state, action) => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+
+    return {
+      ...state,
+      isLoggedIn: false
+    }
+  })
 )

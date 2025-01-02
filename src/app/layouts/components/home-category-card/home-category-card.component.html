@@ -1,0 +1,11 @@
+<a [routerLink]="['/all-products']" [queryParams]="{categoryId: category._id}" class="block">
+  <div class="relative cursor-pointer group">
+    <img class="mx-auto h-auto w-auto theme-category-image dimmed"
+      [src]="category.image.src || './assets/images/default-category.png'"
+      [alt]="category.image.alt || category.displayName + ' category image'" />
+
+    <p class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center theme-category-text lg:text-xl">
+      {{ category.displayName }}
+    </p>
+  </div>
+</a>

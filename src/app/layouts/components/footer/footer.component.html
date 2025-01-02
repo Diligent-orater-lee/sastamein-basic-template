@@ -1,0 +1,63 @@
+<footer
+  class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex-row"
+>
+  <div class="ml-5 lg:w-1/2 text-center lg:text-left">
+    <img
+      class="mt-10 mb-5 h-32 mx-auto lg:mx-0"
+      src="./assets/images/company-logo.png"
+      alt="company logo"
+    />
+    <p class="text-gray-700 leading-relaxed pl-0">
+      Experience wholesale pricing without the wholesale requirements.
+      <br />
+      We bridge manufacturers directly with consumers, eliminating intermediary costs and passing the savings to you.
+      <br />
+      Whether you're a business looking to stock up or an individual seeking premium products, we guarantee factory-direct quality at unmatched prices across our entire range.
+    </p>
+    <div class="mt-10 flex gap-3 justify-center lg:justify-left">
+      <a href="#">
+        <img
+          class="h-5 w-5 cursor-pointer"
+          src="./assets/images/github.svg"
+          alt="github icon"
+        />
+      </a>
+      <a href="#">
+        <img
+          class="h-5 w-5 cursor-pointer"
+          src="./assets/images/telegram.svg"
+          alt="telegram icon"
+        />
+      </a>
+      <a href="#">
+        <img
+          class="h-5 w-5 cursor-pointer"
+          src="./assets/images/linkedin.svg"
+          alt="twitter icon"
+        />
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-6 lg:w-1/2">
+    <div class="mx-5 lg:mx-0 mt-10">
+      <ul class="text-sm leading-8">
+        <li><a class="text-no-wrap" [routerLink]="['info', 'shipping-info']">Shipping Information</a></li>
+        <li><a class="text-no-wrap" [routerLink]="['info', 'terms-and-conditions']">Terms & Condition</a></li>
+        <li><a class="text-no-wrap" [routerLink]="['info', 'privacy-policy']">Privacy policy</a></li>
+        <li><a class="text-no-wrap" [routerLink]="['info', 'refund-policy']">Returns & Refunds</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<!-- /Desktop Footer  -->
+
+<!-- Payment and copyright  -->
+
+<section class="bg-amber-400">
+  <div
+    class="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-2"
+  >
+    <p class="mx-auto text-sm">&copy; {{ companyName }}. All rights reserved, 2025</p>
+  </div>
+</section>

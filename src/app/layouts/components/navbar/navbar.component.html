@@ -1,0 +1,83 @@
+<!-- Nav bar -->
+<!-- hidden on small devices -->
+<nav class="relative theme-nav-bg">
+  <div class="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
+    <button (click)="toggleMenu()"
+      class="ml-5 flex h-full w-40 cursor-pointer items-center justify-center theme-button">
+      <div class="flex justify-around" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="mx-1 h-6 w-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        All categories
+      </div>
+    </button>
+
+    <div class="mx-7 flex gap-8">
+      <a class="font-light text-white duration-100 theme-link-hover" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="font-light text-white duration-100 theme-link-hover" routerLink="all-products" routerLinkActive="active-link">All Products</a>
+      <a class="font-light text-white duration-100 theme-link-hover" routerLink="about-us" routerLinkActive="active-link">About Us</a>
+      <a class="font-light text-white duration-100 theme-link-hover" routerLink="contact-us" routerLinkActive="active-link">Contact Us</a>
+    </div>
+
+    @if (!(isLogin$ | async)) {
+    <div class="ml-auto flex gap-4 px-5">
+      <a class="font-light text-white duration-100 theme-link-hover" routerLink="login">Login</a>
+      <span class="text-white">&#124;</span>
+      <a class="font-light text-white duration-100 theme-link-hover" routerLink="signup">Sign Up</a>
+    </div>
+    } @else {
+    <div class="ml-auto flex gap-4 px-5">
+      <a class="font-light text-white duration-100 theme-link-hover" routerLink="#" (click)="logout()">Logout</a>
+    </div>
+    }
+  </div>
+</nav>
+
+<!-- Menu section - only changed the theme-specific colors -->
+@if (toggleBurgerMenu) {
+<section class="absolute left-0 right-0 z-10 w-full border-b border-r border-l bg-white">
+  <div class="mx-auto flex max-w-[1200px] py-10">
+    <div class="w-[300px] border-r">
+      <ul class="px-5">
+        @for (item of (categoryItems$ | async); track $index) {
+          <li class="flex items-center gap-2 py-2 px-3"
+              [ngClass]="{'theme-active-bg': isActiveCategory($index), 'hover:bg-neutral-100': !isActiveCategory($index)}"
+              (click)="activeCategory = $index">
+            <img width="15px" height="15px" [src]="item.icon" alt="{{ item.displayName }} icon" />
+            {{ item.displayName }}
+            <span class="ml-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="flex w-full justify-between">
+      <div class="flex gap-6">
+        <div class="mx-5">
+          <p class="font-medium text-gray-500">HOT PRODUCTS</p>
+          <ul class="text-sm leading-8">
+            @for (item of (categoryItems$ | async)?.[activeCategory]?.hotDeals; track $index) {
+              <li><a [routerLink]="['/all-products']" [queryParams]="{searchValue: item.value}" (click)="toggleMenu()">{{ item.value }}</a></li>
+            }
+          </ul>
+        </div>
+
+        <div class="mx-5">
+          <p class="font-medium text-gray-500">RECOMMENDED PRODUCTS</p>
+          <ul class="text-sm leading-8">
+            @for (item of (categoryItems$ | async)?.[activeCategory]?.recommended; track $index) {
+              <li><a [routerLink]="['/all-products']" [queryParams]="{searchValue: item.value}" (click)="toggleMenu()">{{ item.value }}</a></li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+}

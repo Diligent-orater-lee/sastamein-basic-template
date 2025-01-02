@@ -8,3 +8,7 @@ export const selectCartItemsCount = createSelector(
   selectCartState,
   (state: CartState) => state.cartItems.length
 );
+export const isProductInWishlist = (productId: string) => createSelector(
+  selectCartState,
+  (state: CartState) => state.wishListProducts.includes(productId)
+)

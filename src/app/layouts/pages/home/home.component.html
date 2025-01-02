@@ -1,0 +1,133 @@
+<!-- Offer image  -->
+<div class="relative">
+  <img class="w-full object-cover brightness-50 filter lg:h-[500px]" [src]="headerImage"
+    alt="Half Price Offer Image" />
+
+  <div class="absolute top-1/2 left-1/2 mx-auto flex w-11/12 max-w-[1200px] -translate-x-1/2 -translate-y-1/2 flex-col text-center text-white lg:ml-5">
+    <h1 class="text-2xl font-bold sm:text-4xl lg:text-left">
+      Best Quality Products, At The Best Price.
+    </h1>
+    <p class="pt-3 text-xs lg:w-3/5 lg:pt-5 lg:text-left lg:text-base">
+      Get premium products at the lowest prices! We source directly from factories, delivering top quality without the markup. Shop confidently knowing you're getting unmatched value.
+    </p>
+    <button type="button" (click)="goToProductsList()"
+      class="mx-auto mt-5 w-1/2 theme-hero-button px-3 py-1 text-black lg:mx-0 lg:h-10 lg:w-2/12">
+      Order Now
+    </button>
+  </div>
+</div>
+
+<!-- Cons bages -->
+<section class="container mx-auto my-8 flex flex-col justify-center gap-3 lg:flex-row">
+  <!-- 1 -->
+  <div class="mx-5 flex flex-row items-center justify-center theme-feature-card py-4 px-5">
+    <div class="">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="h-6 w-6 icon lg:mr-2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+      </svg>
+    </div>
+
+    <div class="ml-6 flex flex-col justify-center">
+      <h3 class="text-left text-xs font-bold lg:text-sm">Direct from Factory</h3>
+      <p class="text-light text-center text-xs lg:text-left lg:text-sm">
+        Products come directly from the factory
+      </p>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="mx-5 flex flex-row items-center justify-center theme-feature-card py-4 px-5">
+    <div class="">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="h-6 w-6 icon lg:mr-2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+      </svg>
+    </div>
+
+    <div class="ml-6 flex flex-col justify-center">
+      <h3 class="text-left text-xs font-bold lg:text-sm">Retail & B2B Delivery</h3>
+      <p class="text-light text-left text-xs lg:text-sm">At the Best Price</p>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="mx-5 flex flex-row items-center justify-center theme-feature-card py-4 px-5">
+    <div class="">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="h-6 w-6 icon lg:mr-2">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+      </svg>
+    </div>
+
+    <div class="ml-6 flex flex-col justify-center">
+      <h3 class="text-left text-xs font-bold lg:text-sm">24/7 Supports</h3>
+      <p class="text-light text-left text-xs lg:text-sm">Consumer support</p>
+    </div>
+  </div>
+</section>
+
+<p class="mx-auto mt-10 mb-5 max-w-[1200px] px-5 theme-section-header">SHOP BY CATEGORY</p>
+
+<section class="mx-auto grid max-w-[1200px] grid-cols-2 px-5 lg:grid-cols-3 lg:gap-5">
+  @for (category of categories$ | async; track category._id) {
+    <app-home-category-card [category]="category"></app-home-category-card>
+  }
+</section>
+
+<p class="mx-auto mt-10 mb-5 max-w-[1200px] px-5 theme-section-header">HOT DEALS</p>
+
+<!-- Slider  -->
+<section class="splide mx-auto max-w-[1200px] px-5 py-2" aria-label="Splide Basic HTML Example">
+  <div class="splide__track">
+    <ul class="splide__list mx-auto max-w-[1200px]">
+      @for (item of hotDealProducts$ | async; track $index) {
+        <li class="splide__slide">
+          <app-product-card [product]="item"></app-product-card>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Special offer card -->
+<div class="mx-auto max-w-[1200px] px-5">
+  <section class="mt-10 flex max-w-[1200px] justify-between theme-special-offer px-5">
+    <div class="py-8 px-3 lg:px-16">
+      <p class="description">WIN YOUR PRODUCT FOR FREE</p>
+      <h2 class="pt-6 text-5xl font-bold title">100% OFF!!!</h2>
+      <p class="pt-4 description">
+        ONE PRODUCT AMONG OUR CARGO IS FREE FOR THE LUCKY CUSTOMER <br />
+        ORDER NOW. YOU MIGHT GET IT FOR FREE.
+      </p>
+      <button (click)="goToProductsList()" class="mt-6 action-button px-4 py-2">
+        Shop now
+      </button>
+    </div>
+
+    <img class="-mr-5 hidden w-[550px] object-cover md:block" src="./assets/images/free_symbol.jpg"
+      alt="Credit card mockup image" />
+  </section>
+</div>
+
+<p class="mx-auto mt-10 mb-5 max-w-[1200px] px-5 theme-section-header">RECOMMENDED FOR YOU</p>
+
+<!-- Recommendations -->
+<section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-3 px-5 pb-10 lg:grid-cols-4">
+  @for (item of (recommendedProducts$ | async); track $index) {
+    <app-product-card [product]="item"></app-product-card>
+  }
+</section>
+
+<section>
+  <button [routerLink]="['/all-products']" class="theme-show-more flex mx-auto border rounded-full p-2" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px">
+      <path d="M0 0h24v24H0V0z" fill="none"/>
+      <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>
+    </svg>
+    Show More Products.
+  </button>
+</section>

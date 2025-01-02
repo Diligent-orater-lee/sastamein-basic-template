@@ -1,0 +1,14 @@
+.logo {
+  height: 56px;
+}
+@media (max-width: 767px) {
+  .logo {
+    height: 40px;
+  }
+}
+.sticked-view {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: white;
+}

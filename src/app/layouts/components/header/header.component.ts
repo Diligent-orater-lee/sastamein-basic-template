@@ -5,11 +5,11 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { debounceTime, filter, Observable } from 'rxjs';
-import { loadCartItems } from '../../modules/cart/store/cart.actions';
-import { selectCartItemsCount } from '../../modules/cart/store/cart.selectors';
-import { loadProductsPredictedTexts, searchProducts } from '../../modules/products/store/products.actions';
-import { selectProductsPredictedTexts } from '../../modules/products/store/products.selectors';
-import { AppState } from '../../store/app.state';
+import { loadCartItems } from '../../../modules/cart/store/cart.actions';
+import { selectCartItemsCount } from '../../../modules/cart/store/cart.selectors';
+import { loadProductsPredictedTexts, searchProducts } from '../../../modules/products/store/products.actions';
+import { selectProductsPredictedTexts } from '../../../modules/products/store/products.selectors';
+import { AppState } from '../../../store/app.state';
 
 @Component({
   selector: 'app-header',

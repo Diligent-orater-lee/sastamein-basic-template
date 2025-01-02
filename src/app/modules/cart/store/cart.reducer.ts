@@ -1,11 +1,12 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadCartItems, loadCartItemsFailure, loadCartItemsSuccess } from "./cart.actions";
+import { loadCartItems, loadCartItemsFailure, loadCartItemsSuccess, toggleWishlistAction } from "./cart.actions";
 import { CartState } from "./cart.state";
 
 const initialState: CartState = {
   cartItems: [],
   error: '',
-  loading: false
+  loading: false,
+  wishListProducts: JSON.parse(localStorage.getItem('wishListProducts') ?? "[]")
 }
 
 export const cartReducer = createReducer<CartState>(
@@ -28,5 +29,24 @@ export const cartReducer = createReducer<CartState>(
       loading: false,
       error: action.error
     }
+  }),
+  on(toggleWishlistAction, (state, action) => {
+    const productId = action.productId;
+    const isProductAlreadyAdded = state.cartItems.find(item => item === productId);
+    let newState;
+    if(isProductAlreadyAdded) {
+      newState = {
+        ...state,
+        wishListProducts: state.wishListProducts.filter(item => item !== productId)
+      }
+    } else {
+      newState = {
+        ...state,
+        wishListProducts: [...state.wishListProducts, action.productId]
+      }
+    }
+
+    localStorage.setItem('wishListProducts', JSON.stringify(newState.wishListProducts));
+    return newState;
   })
 )
