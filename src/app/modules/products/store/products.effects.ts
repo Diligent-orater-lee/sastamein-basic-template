@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { map, switchMap } from "rxjs";
 import { ProductService } from "../../../services/product.service";
-import { loadCategoriesDto, loadCategoryWithSubProductsDto, loadHotDealProducts, loadProductsPredictedTexts, loadRecommendedProducts, setCategoriesDto, setCategoryWithSubProductsDto, setHotDealProducts, setProductsPredictedTexts, setRecommendedProducts } from "./products.actions";
+import { loadCategories, loadCategoriesDto, loadCategoryWithSubProductsDto, loadFilteredProducts, loadHotDealProducts, loadProductsPredictedTexts, loadRecommendedProducts, setCategories, setCategoriesDto, setCategoryWithSubProductsDto, setFilteredProducts, setHotDealProducts, setProductsPredictedTexts, setRecommendedProducts } from "./products.actions";
 
 @Injectable()
 export class ProductEffects {
@@ -31,8 +31,17 @@ export class ProductEffects {
   categoryDtosLoadEffect$ = createEffect(() =>
     this.action$.pipe(
       ofType(loadCategoriesDto),
-      switchMap((action) => this.productService.getAllCategories().pipe(
+      switchMap((action) => this.productService.getAllFilterCategories().pipe(
         map((res) => setCategoriesDto(res))
+      ))
+    )
+  );
+
+  categoryLoadEffect$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(loadCategories),
+      switchMap((action) => this.productService.getAllCategories().pipe(
+        map((res) => setCategories(res))
       ))
     )
   );
@@ -51,6 +60,20 @@ export class ProductEffects {
       ofType(loadRecommendedProducts),
       switchMap((action) => this.productService.getAllRecommendedProducts(action.selectedProductId).pipe(
         map((res) => setRecommendedProducts(res))
+      ))
+    )
+  );
+
+  setFilteredProductsEffect$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(loadFilteredProducts),
+      switchMap((action) => this.productService.getAllProducts({
+        categoryIds: action.categoryIds,
+        search: action.search,
+        minPrice: action.minPrice,
+        maxPrice: action.maxPrice
+       }).pipe(
+        map((res) => setFilteredProducts(res))
       ))
     )
   );

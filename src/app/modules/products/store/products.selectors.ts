@@ -26,4 +26,14 @@ export const recommendedProductsSelector = createSelector(
 export const hotDealProductsSelector = createSelector(
   selectProductState,
   (state) => state.hotDealProducts
-)
+);
+
+export const selectFilteredProducts = createSelector(
+  selectProductState,
+  (state) => state.filteredProducts
+);
+
+export const selectLoading = createSelector(
+  selectProductState,
+  (state) => state.loading
+);

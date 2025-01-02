@@ -1,15 +1,14 @@
-import { CategoryWithSubProductsDto, ProductCategory, ProductListItem } from "../../../shared/interfaces";
+import { CategoryWithSubProductsDto, ProductCategory, ProductCategoryDto, ProductListItem } from "../../../shared/interfaces";
 
 export interface ProductState {
-  products: Product[];
+  products: ProductListItem[];
   error: string;
   loading: boolean;
   productsPredictedTexts: string[];
   categoryWithSubProductsDto: CategoryWithSubProductsDto[];
-  categoriesDtos: ProductCategory[];
+  categories: ProductCategory[];
+  categoriesDtos: ProductCategoryDto[];
   recommendedProducts: ProductListItem[];
   hotDealProducts: ProductListItem[];
-}
-
-export interface Product {
+  filteredProducts: ProductListItem[];
 }

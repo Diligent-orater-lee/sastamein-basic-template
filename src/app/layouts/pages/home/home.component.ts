@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Splide } from '@splidejs/splide';
 import { Observable, tap } from 'rxjs';
-import { loadCategoriesDto, loadHotDealProducts, loadRecommendedProducts } from '../../../modules/products/store/products.actions';
+import { loadCategories, loadHotDealProducts, loadRecommendedProducts } from '../../../modules/products/store/products.actions';
 import { ProductCategory, ProductListItem } from '../../../shared/interfaces';
 import { AppState } from '../../../store/app.state';
 import { HomeCategoryCardComponent } from '../../components/home-category-card/home-category-card.component';
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 
       setTimeout(() => splide.mount());
     }));
-    this.categories$ = this.store.select(state => state.products.categoriesDtos);
+    this.categories$ = this.store.select(state => state.products.categories);
   }
 
   get headerImage() {
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(loadCategoriesDto());
+    this.store.dispatch(loadCategories());
     this.store.dispatch(loadHotDealProducts());
     this.store.dispatch(loadRecommendedProducts({}));
   }

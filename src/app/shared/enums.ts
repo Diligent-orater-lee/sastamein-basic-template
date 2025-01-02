@@ -7,3 +7,8 @@ export enum ContactUsRouteType {
 export enum OfferViewTypeEnum {
   DISCOUNT_PRICE = 1
 }
+
+export enum FieldTypeEnum {
+  TEXT = "text",
+  TILE_SELECT = "tile_select",
+}

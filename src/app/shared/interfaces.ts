@@ -1,5 +1,31 @@
 import { KeyValue } from "@angular/common";
-import { OfferViewTypeEnum } from "./enums";
+import { FieldTypeEnum, OfferViewTypeEnum } from "./enums";
+
+export interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  referencePrice: number;
+  desc: string;
+  stock: number;
+  images: string[];
+  brand: string;
+  category: ProductCategoryDto;
+  isHotDeal: boolean;
+  additionalFields: {
+    fieldLabel: string;
+    fieldType: FieldTypeEnum;
+    fieldValue: string;
+    fieldOptions?: {
+      key: string;
+      value: string;
+    }[];
+  }[];
+
+  rating: number;
+  reviewCount: number;
+  productFullDetailsHtml: string;
+}
 
 export interface ProductCategory {
   _id?: string;

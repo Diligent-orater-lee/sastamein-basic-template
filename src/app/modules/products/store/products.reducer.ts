@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadProducts, setCategoriesDto, setCategoryWithSubProductsDto, setHotDealProducts, setProductsPredictedTexts, setRecommendedProducts } from "./products.actions";
+import { loadProducts, setCategories, setCategoriesDto, setCategoryWithSubProductsDto, setFilteredProducts, setHotDealProducts, setProductsPredictedTexts, setRecommendedProducts } from "./products.actions";
 import { ProductState } from "./products.state";
 
 const initialState: ProductState = {
@@ -8,9 +8,11 @@ const initialState: ProductState = {
   loading: false,
   productsPredictedTexts: [],
   categoryWithSubProductsDto: [],
+  categories: [],
   categoriesDtos: [],
   recommendedProducts: [],
   hotDealProducts: [],
+  filteredProducts: []
 }
 
 export const productReducer = createReducer<ProductState>(
@@ -27,6 +29,10 @@ export const productReducer = createReducer<ProductState>(
     ...state,
     categoryWithSubProductsDto: action.result
   })),
+  on(setCategories, (state, action) => ({
+    ...state,
+    categories: action.result
+  })),
   on(setCategoriesDto, (state, action) => ({
     ...state,
     categoriesDtos: action.result
@@ -38,5 +44,9 @@ export const productReducer = createReducer<ProductState>(
   on(setRecommendedProducts, (state, action) => ({
     ...state,
     recommendedProducts: action.result
+  })),
+  on(setFilteredProducts, (state, action) => ({
+    ...state,
+    filteredProducts: action.result
   }))
 )
