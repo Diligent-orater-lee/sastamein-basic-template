@@ -58,11 +58,6 @@ export class ProductCardComponent implements OnInit, OnChanges {
       return;
     }
     this.store.dispatch(addToCartAction({ productId: this.product.id }));
-    Swal.fire({
-      icon: 'success',
-      title: 'Great!',
-      text: 'Product Added To Your Cart Successfully'
-    })
   }
 
   addProductToWishList(e: any) {

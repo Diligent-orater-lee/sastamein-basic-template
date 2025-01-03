@@ -5,7 +5,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { debounceTime, filter, Observable } from 'rxjs';
-import { loadCartItems } from '../../../modules/cart/store/cart.actions';
+import { loadCartData } from '../../../modules/cart/store/cart.actions';
 import { selectCartItemsCount } from '../../../modules/cart/store/cart.selectors';
 import { loadProductsPredictedTexts, searchProducts } from '../../../modules/products/store/products.actions';
 import { selectProductsPredictedTexts } from '../../../modules/products/store/products.selectors';
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
   predictedTexts$!: Observable<string[]>;
 
   constructor(private store: Store<AppState>, private cref: ChangeDetectorRef) {
-    this.store.dispatch(loadCartItems());
+    this.store.dispatch(loadCartData());
     this.cartCount$ = this.store.select(selectCartItemsCount);
     this.predictedTexts$ = this.store.select(selectProductsPredictedTexts);
 

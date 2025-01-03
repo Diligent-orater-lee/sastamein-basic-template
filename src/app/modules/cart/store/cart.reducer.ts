@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadCartItems, loadCartItemsFailure, loadCartItemsSuccess, toggleWishlistAction } from "./cart.actions";
+import Swal from 'sweetalert2';
+import { addToCartActionSuccess, loadCartDataSuccess, loadCartItemsFailure, toggleWishlistAction } from "./cart.actions";
 import { CartState } from "./cart.state";
 
 const initialState: CartState = {
@@ -12,17 +13,13 @@ const initialState: CartState = {
 export const cartReducer = createReducer<CartState>(
   initialState,
 
-  on(loadCartItems, (state, action) => {
+  on(loadCartDataSuccess, (state, action) => {
     return {
       ...state,
-      loading: true
+      cartItems: action.data,
+      loading: false
     }
   }),
-  on(loadCartItemsSuccess, (state, action) => ({
-    ...state,
-    loading: false,
-    cartItems: action.data
-  })),
   on(loadCartItemsFailure, (state, action) => {
     return {
       ...state,
@@ -30,9 +27,23 @@ export const cartReducer = createReducer<CartState>(
       error: action.error
     }
   }),
+
+  on(addToCartActionSuccess, (state, action) => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Great!',
+      text: 'Product Added To Your Cart Successfully'
+    });
+
+    return {
+      ...state,
+      loading: false
+    }
+  }),
+
   on(toggleWishlistAction, (state, action) => {
     const productId = action.productId;
-    const isProductAlreadyAdded = state.cartItems.find(item => item === productId);
+    const isProductAlreadyAdded = state.wishListProducts.includes(productId);
     let newState;
     if(isProductAlreadyAdded) {
       newState = {

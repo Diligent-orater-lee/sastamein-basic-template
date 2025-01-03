@@ -1,9 +1,8 @@
+import { CartItemDto } from "../../../shared/interfaces";
+
 export interface CartState {
-  cartItems: CartItem[];
+  cartItems: CartItemDto[];
   error: string;
   loading: boolean;
   wishListProducts: string[];
-}
-
-export interface CartItem {
 }

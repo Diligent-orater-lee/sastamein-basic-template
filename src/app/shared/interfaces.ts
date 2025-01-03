@@ -72,3 +72,13 @@ export interface ProductListItem {
   desc: string;
   category: ProductCategoryDto;
 }
+
+export interface CartItemDto {
+  _id: string;
+  name: string;
+  price: number;
+  desc: string;
+  stock: number;
+  image: string;
+  count: number;
+}

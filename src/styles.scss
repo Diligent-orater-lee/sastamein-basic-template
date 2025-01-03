@@ -43,6 +43,24 @@
   /* yellow-400 for special text */
 }
 
+// Theme classes
+.theme-button {
+  background-color: var(--theme-primary);
+
+  &:hover {
+    background-color: #FDE68A; /* yellow-300 */
+  }
+}
+
+.theme-notification {
+  background-color: var(--theme-notification);
+}
+
+// Active link styling
+.active-link {
+  color: var(--theme-primary);
+}
+
 // Navigation theme classes
 .theme-nav-bg {
   background-color: var(--theme-nav-bg);

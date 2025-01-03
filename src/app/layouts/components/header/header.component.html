@@ -55,10 +55,10 @@
       </svg>
       <p class="text-xs">Cart</p>
       @if(cartCount$ | async){
-      <div
-        class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white theme-notification rounded-full -top-2 -end-2">
-        {{ cartCount$ | async }}
-      </div>
+        <div
+          class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white theme-notification rounded-full -top-2 -end-2">
+          {{ cartCount$ | async }}
+        </div>
       }
     </a>
 
