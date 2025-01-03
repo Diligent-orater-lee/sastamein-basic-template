@@ -22,6 +22,7 @@
     "@angular/router": "^18.2.0",
     "@ngrx/effects": "^18.1.1",
     "@ngrx/store": "^18.1.1",
+    "@ngrx/store-devtools": "^18.1.1",
     "@splidejs/splide": "^4.1.4",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.15.5",
